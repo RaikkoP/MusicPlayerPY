@@ -7,7 +7,7 @@ from models import Directories
 
 def main():
     test = Directories()
-    test.log_directories
+    test.log_directories()
 
 if __name__ == "__main__":
     main();

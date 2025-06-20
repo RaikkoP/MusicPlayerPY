@@ -1,44 +1,22 @@
 from tkinter import *;
 from tkinter.filedialog import askdirectory
-from models import Directory
+from typing import List
+from .directory import Directory
 
 class Directories:
-    #Before I can work on this I need to create the basic Directory path as well
-    current_directories = []
-    display = Tk()
-    display.geometry("300x300")
-    display.title("Name the directory")
+    current_directories: List[Directory] = []
 
     def  __init__(self):
-        self.get_new_directory()
+        self.current_directories = []
+        self.add_new_directory()
 
-    def display_get_directory_name(self):
-        label = Label(text= "Type in a name for directory:")
-        window = Text(self.display, height=10
-                      , width=24)
-        def on_confirm():
-            # Connect to the Directory class
-            print(window.get("1.0", "end-1c"))
-        button = Button(self.display, height = 2,
-                width=20,
-                text="Confirm",
-                command=on_confirm)
-
-        label.pack()
-        window.pack()
-        button.pack()
-        self.display.mainloop()
-
-        return
-
-    def get_new_directory(self):
+    ## Gets a new directory of songs and saves it
+    def add_new_directory(self):
         path = askdirectory()
-        self.add_new_directory(path)
-
-    def add_new_directory(self, directory):
-        ## get name for new directory of songs
-        name = self.display_get_directory_name()
-        self.current_directories.append(directory)
+        #TODO: TK should open a pop up for the name
+        demo = 'demo'
+        new_directory = Directory(demo, path)
+        self.current_directories.append(new_directory)
 
     def log_directories(self):
-        print(self.current_directories) 
+        print(f"{self.current_directories[0].path} <----")
