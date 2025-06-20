@@ -1,9 +1,9 @@
 from tkinter import *;
 from tkinter.filedialog import askdirectory
-from utils.helpers import get_text_input_from_display
+from models import Directory
 
 class Directories:
-
+    #Before I can work on this I need to create the basic Directory path as well
     current_directories = []
     display = Tk()
     display.geometry("300x300")
@@ -17,7 +17,8 @@ class Directories:
         window = Text(self.display, height=10
                       , width=24)
         def on_confirm():
-            return get_text_input_from_display(window)
+            # Connect to the Directory class
+            print(window.get("1.0", "end-1c"))
         button = Button(self.display, height = 2,
                 width=20,
                 text="Confirm",
@@ -26,6 +27,7 @@ class Directories:
         label.pack()
         window.pack()
         button.pack()
+        self.display.mainloop()
 
         return
 
