@@ -1,1 +1,1 @@
-from .directories import Directories
+from .playlists import Playlists
